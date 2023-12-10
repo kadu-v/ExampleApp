@@ -14,11 +14,11 @@ open class SwiftCallback {
     }
 
     deinit {
-        print("Drop SwiftCallback class object, here")
+        print("[SwiftCallback]: Drop SwiftCallback class object, here")
     }
 
     open func greeting(x: Int) -> Int32 {
-        fatalError("Must be override this function")
+        fatalError("[SwiftCallback]: Must be override this function")
     }
 }
 

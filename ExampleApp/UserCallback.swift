@@ -12,11 +12,11 @@ class UserCallback: SwiftCallback {
     var list: [UInt8] = Array(repeating: 100, count: 1000) // 1KB
 
     public func f() {
-        print("Other method of UserCallback")
+        print("[UserCallback]: Other method of UserCallback")
     }
 
     override func greeting(x: Int) -> Int32 {
-        print("called user defined callback function: \(x)")
+        print("[UserCallback]: called user defined callback function: \(x)")
         self.f()
         return Int32(x)
     }

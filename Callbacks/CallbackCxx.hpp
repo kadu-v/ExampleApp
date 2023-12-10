@@ -25,12 +25,12 @@ public:
         swift_callback_ = swift_callback;
     }
     void clear_callback() {
-        free(swift_callback_);
+        delete swift_callback_;
         swift_callback_ = nullptr;
     }
     int greeting(int x) {
         if (swift_callback_ == nullptr) {
-            printf("Not set a callback yet\n");
+            printf("[CxxCallback]: Not set a callback yet\n");
             return -404;
         }
         return swift_callback_->greeting(x);
