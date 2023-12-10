@@ -18,8 +18,21 @@ namespace Callbacks {
 
 class CallbackCxx: CallbackBase {
 public:
-    CallbackCxx(SwiftCallback* swift_callback): swift_callback_(swift_callback) {};
+    CallbackCxx() {
+        swift_callback_ = nullptr;
+    }
+    void set_callback(SwiftCallback* swift_callback) {
+        swift_callback_ = swift_callback;
+    }
+    void clear_callback() {
+        free(swift_callback_);
+        swift_callback_ = nullptr;
+    }
     int greeting(int x) {
+        if (swift_callback_ == nullptr) {
+            printf("Not set a callback yet\n");
+            return -404;
+        }
         return swift_callback_->greeting(x);
     }
 private:

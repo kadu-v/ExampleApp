@@ -14,5 +14,6 @@ class SwiftCallback;
 
 void set_callbacks(SwiftCallback* swift_callback);
 void clear_callbacks();
+int execute_callbacks(int x);
 }
 #endif /* Callback_hpp */

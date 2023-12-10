@@ -13,7 +13,11 @@ open class SwiftCallback {
         self.x = x
     }
 
-    open func greeting(x: Int32) -> Int32 {
+    deinit {
+        print("Drop SwiftCallback class object, here")
+    }
+
+    open func greeting(x: Int) -> Int32 {
         fatalError("Must be override this function")
     }
 }
@@ -23,6 +27,13 @@ public func setCallbacks(_ callback: SwiftCallback) {
     unsafePointer.initialize(to: callback)
     let pointer = UnsafePointer(unsafePointer)
     let opaque = OpaquePointer(pointer)
-    Callbacks.clear_callbacks()
     Callbacks.set_callbacks(opaque)
+}
+
+public func executeCallbacks(_ x: Int) {
+    Callbacks.execute_callbacks(Int32(x))
+}
+
+public func clearCallbacks() {
+    Callbacks.clear_callbacks()
 }
